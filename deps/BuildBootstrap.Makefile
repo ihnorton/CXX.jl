@@ -78,11 +78,15 @@ endif
 
 ifneq (,$(wildcard $(build_shlibdir)/libjulia-debug.$(SHLIB_EXT)))
 usr/lib/libcxxffi-debug.$(SHLIB_EXT): build/bootstrap.o | usr/lib
-	@$(call PRINT_LINK, $(CXX) -shared -fPIC $(JULIA_LDFLAGS) -ljulia-debug $(LDFLAGS) -o $@ $(WHOLE_ARCHIVE) $(CLANG_LIBS) $(LLDB_LIBS) $(NO_WHOLE_ARCHIVE) $< )
+	@$(call PRINT_LINK, $(CXX) -shared -fPIC $(JULIA_LDFLAGS) -ljulia-debug $(LDFLAGS) -o $@ -lLLVM-3.5svn $(WHOLE_ARCHIVE) $(CLANG_LIBS) $(NO_WHOLE_ARCHIVE) $< )
 else
 usr/lib/libcxxffi-debug.$(SHLIB_EXT):
 	@echo "Not building debug library because corresponding julia DEBUG library does not exist."
+<<<<<<< Updated upstream
 	@echo "To build, simply run the build again once the library at"
 	@echo $(build_libdir)/libjulia-debug.$(SHLIB_EXT)
 	@echo "has been built."
+=======
+	@echo "To build, simply run the build again once the the library has been built."
+>>>>>>> Stashed changes
 endif
