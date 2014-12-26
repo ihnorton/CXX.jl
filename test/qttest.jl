@@ -71,13 +71,13 @@ void handle_hi()
 # - type translation doesn't work right for $:(btn) if I call connect from a cxx""" block
 # - I get isexprs assertion failure if I try to use a lambda. think it might be a
 #   block parsing issue though.
-function setup(btn)
+function setup(btn, signal)
     icxx"""
-        QObject::connect($btn, &QPushButton::clicked,
+        QObject::connect($btn, $signal,
             handle_hi );
     """
 end
-setup(hibtn)
+setup(hibtn, @cxx(&QPushButton::clicked))
 
 # display the window
 @cxx mb->setWindowModality(@cxx(Qt::NonModal))
