@@ -77,7 +77,7 @@ function setup(btn, signal)
             handle_hi );
     """
 end
-setup(hibtn, @cxx(&QPushButton::clicked))
+setup(hibtn, pcpp"QPushButton::clicked")
 
 # display the window
 @cxx mb->setWindowModality(@cxx(Qt::NonModal))
