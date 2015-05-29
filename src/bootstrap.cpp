@@ -685,7 +685,7 @@ class JuliaCodeGenerator : public clang::ASTConsumer {
 
 
 extern "C" {
-  void *julia_namespace = 0;
+ DLLEXPORT void *julia_namespace = 0;
 }
 
 class JuliaSemaSource : public clang::ExternalSemaSource
